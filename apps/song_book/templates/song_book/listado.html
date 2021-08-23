@@ -1,0 +1,44 @@
+{% extends "song_book/base.html" %}
+
+    {% load static %}
+
+{% block contenido %}
+
+
+<br>
+<br>
+<br>
+    <center>
+
+<table class="table table table-striped col-md-8">
+    <thead>
+        <tr>
+            <th style="font-size: 2em;">Nombre</th>
+        </tr>
+    </thead>
+    <tbody>   
+        {% for c in canciones %}
+        <tr>
+            <td  style="list-style:none;" >
+                <a style="font-size: 1.8em;" href="{% url 'cancion' c.id %}"><tab>{{ c.name}}</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td>
+                <H2>Aun no hay Canciones</H2>
+                
+            </td>
+            
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+</center>
+
+ 
+  
+
+
+{% endblock contenido %}

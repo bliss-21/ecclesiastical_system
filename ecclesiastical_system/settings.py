@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xztyoksw%_9c%bh@iv9%as5bq$lhi3x!^9r*e5m+j@_)r(4$zt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://127.0.0.1','127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -91,7 +91,7 @@ DATABASES = {
     },
     'bible': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR  / 'data_base/bible.sqlite3',
+        'NAME': BASE_DIR  / 'data_base/bible.sqlite',
         'USER': '',
         'PASSWORD': '',
     },
@@ -108,7 +108,7 @@ DATABASE_ROUTERS = ['ecclesiastical_system.database_router.DatabaseAppsRouter']
 DATABASE_APPS_MAPPING = {
     # example:
     # 'app_name':'database_name',
-    'blibe':    'blibe',
+    'bible':    'bible',
     'song_book':'song_book',
 
 }

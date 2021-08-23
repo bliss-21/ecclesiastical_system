@@ -7,35 +7,29 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-class Testament(models.Model):
-    
-    name = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'testament'
-        app_label = 'bible'
-
-    def __str__(self):
-        return self.name
-
 class Book(models.Model):
-    
-    testament = models.ForeignKey('Testament', models.DO_NOTHING, blank=True, null=True)
-    name = models.TextField(blank=True, null=True)
-    abbreviation = models.TextField(blank=True, null=True)
+    testament_id = models.IntegerField(blank=True, null=True)
+    name = models.CharField(max_length=250, blank=True, null=True)
+    abbreviation = models.CharField(max_length=250, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'book'
         app_label = 'bible'
 
-    def __str__(self):
-        return self.name
+
+
+class Testament(models.Model):
+    name = models.CharField(max_length=250, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'testament'
+        app_label = 'bible'
+
 
 class Verse(models.Model):
-    
-    book = models.ForeignKey(Book, models.DO_NOTHING, blank=True, null=True)
+    book_id = models.IntegerField(blank=True, null=True)
     chapter = models.IntegerField(blank=True, null=True)
     verse = models.IntegerField(blank=True, null=True)
     text = models.TextField(blank=True, null=True)
@@ -44,7 +38,3 @@ class Verse(models.Model):
         managed = False
         db_table = 'verse'
         app_label = 'bible'
-        
-    def __str__(self):
-        return str(self.book)+' : '+str(self.chapter)+' - '+str(self.verse)
-
